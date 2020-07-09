@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 class Fragment_Tariflar : Fragment() {
-
+    //salom
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
