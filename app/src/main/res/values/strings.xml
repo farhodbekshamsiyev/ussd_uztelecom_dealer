@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">USSD Uzmobile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Asosiy">Asosiy fragment</string>
+    <string name="Tariflar">Tariflar fragment</string>
+    <string name="Xizmatlar">Xizmatlar fragment</string>
+    <string name="Paketlar">Paketlar fragment</string>
+    <string name="Kuproq">Kuproq fragment</string>
+</resources>

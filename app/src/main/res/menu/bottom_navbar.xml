@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/asosiy"
+        android:icon="@drawable/selector_bottom_nav_home"
+        android:title="Asosiy" />
+    <item
+        android:id="@+id/tariflar"
+        android:icon="@drawable/selector_bottom_nav_tariffs"
+        android:title="Tariflar" />
+    <item
+        android:id="@+id/xizmatlar"
+        android:icon="@drawable/selector_bottom_nav_services"
+        android:title="Xizmatlar" />
+    <item
+        android:id="@+id/paketlar"
+        android:icon="@drawable/selector_bottom_nav_packs"
+        android:title="Paketlar" />
+    <item
+        android:id="@+id/kuproq"
+        android:icon="@drawable/selector_bottom_nav_more"
+        android:title="Ko\'proq" />
+
+</menu>

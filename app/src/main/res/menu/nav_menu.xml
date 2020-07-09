@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nav_phone"
+        android:icon="@drawable/selector_bottom_nav_home"
+        android:title="Phone selected"
+        app:showAsAction="ifRoom" />
+
+</menu>
