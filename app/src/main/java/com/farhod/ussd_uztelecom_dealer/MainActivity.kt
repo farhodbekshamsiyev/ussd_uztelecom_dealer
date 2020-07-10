@@ -54,15 +54,11 @@ class MainActivity : AppCompatActivity() {
                 }
 
             }
-            if (!joriyFragment.isVisible) {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.frame_layout, joriyFragment, joriyFragment.tag)
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                    .commit()
-               } else {
-                Toast.makeText(this, joriyFragment.toString(), Toast.LENGTH_SHORT).show()
-            }
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.frame_layout, joriyFragment, joriyFragment.tag)
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .commit()
 
             true
         }
