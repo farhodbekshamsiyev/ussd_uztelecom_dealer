@@ -8,8 +8,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -21,41 +19,21 @@ import kotlinx.android.synthetic.main.fragment_asosiy.*
 
 class Fragment_Asosiy : Fragment() {
 
-    val TELEPHONE_SCHEME = "tel:"
-    val PHONE_NUMBER = "+998905178222"
-    val COMPANY_PHONE = "1099"
-    val CHECK_BALANCE = "*107#"
-    val REQUEST_PHONE_CALL = 1
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val root: View = inflater.inflate(R.layout.fragment_asosiy, container, false)
+        return inflater.inflate(R.layout.fragment_asosiy, container, false)
+    }
 
-//        btn_asosiy_fr_1.setOnClickListener(listener)
-//        btn_asosiy_fr_2.setOnClickListener(listener)
-//        btn_asosiy_fr_3.setOnClickListener(listener)
-//        txt_asosiy_4.setOnClickListener(listener)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        val btnBalans: ImageButton = root.findViewById(R.id.btn_asosiy_fr_1)
-        btnBalans.setOnClickListener(listener)
-
-        val btnOperator: ImageButton = root.findViewById(R.id.btn_asosiy_fr_2)
-        btnOperator.setOnClickListener(listener)
-
-        val btnYordam: ImageButton = root.findViewById(R.id.btn_asosiy_fr_3)
-        btnYordam.setOnClickListener(listener)
-
-        val txtView_Shaxsiy_kabinet: TextView = root.findViewById(R.id.txt_asosiy_4)
-        txtView_Shaxsiy_kabinet.setOnClickListener(listener)
-
-        val sliderView: SliderView = root.findViewById(R.id.imageSlider)
+        btn_asosiy_fr_1.setOnClickListener(listener)
+        btn_asosiy_fr_2.setOnClickListener(listener)
+        btn_asosiy_fr_3.setOnClickListener(listener)
+        txt_asosiy_4.setOnClickListener(listener)
 
         val sliderImages = ArrayList<SliderData>()
 
@@ -66,17 +44,15 @@ class Fragment_Asosiy : Fragment() {
         sliderImages.add(SliderData(R.drawable.slider_image))
 
         val adapter = SliderAdapterExample(context, sliderImages)
-        sliderView.setSliderAdapter(adapter)
+        imageSlider.setSliderAdapter(adapter)
 
 //        imageSlider.setSliderAdapter(SliderAdapterExample(context, sliderImages))
 
-        sliderView.setIndicatorAnimation(IndicatorAnimationType.THIN_WORM) //set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
-        sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
-        sliderView.autoCycleDirection = SliderView.AUTO_CYCLE_DIRECTION_RIGHT
-        sliderView.scrollTimeInSec = 4
-        sliderView.startAutoCycle()
-
-        return root
+        imageSlider.setIndicatorAnimation(IndicatorAnimationType.THIN_WORM) //set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
+        imageSlider.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
+        imageSlider.autoCycleDirection = SliderView.AUTO_CYCLE_DIRECTION_RIGHT
+        imageSlider.scrollTimeInSec = 4
+        imageSlider.startAutoCycle()
     }
 
     override fun onRequestPermissionsResult(
@@ -113,7 +89,8 @@ class Fragment_Asosiy : Fragment() {
                         arrayOf(Manifest.permission.CALL_PHONE),
                         REQUEST_PHONE_CALL
                     )
-                } else { }
+                } else {
+                }
                 callPhone("$TELEPHONE_SCHEME$COMPANY_PHONE")
             }
 
@@ -139,6 +116,13 @@ class Fragment_Asosiy : Fragment() {
     }
 
     companion object {
+        const val TELEPHONE_SCHEME = "tel:"
+        const val PHONE_NUMBER = "+998905178222"
+        const val COMPANY_PHONE = "1099"
+        const val CHECK_BALANCE = "*107#"
+        const val REQUEST_PHONE_CALL = 1
+
+        @JvmStatic
         fun newInstance() = Fragment_Asosiy()
     }
 
