@@ -21,4 +21,8 @@ class Fragment_Xizmatlar : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_xizmatlar, container, false)
     }
+
+    companion object {
+        fun newInstance() = Fragment_Xizmatlar()
+    }
 }

@@ -1,11 +1,13 @@
 package com.farhod.ussd_uztelecom_dealer
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -24,8 +26,9 @@ class Fragment_Tariflar : Fragment() {
         val root: View = inflater.inflate(R.layout.fragment_tariflar, container, false)
         val toolbar: Toolbar = root.findViewById(R.id.toolbar_tariflar)
         (activity as AppCompatActivity).setSupportActionBar(toolbar)
-        (activity as AppCompatActivity).supportActionBar?.setTitle("Barcha tariflar")
+        (activity as AppCompatActivity).supportActionBar?.title = "Barcha tariflar"
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 //        toolbar.inflateMenu(R.menu.nav_menu)
 
         val recyclerView: RecyclerView = root.findViewById(R.id.recycler_tariflar)
@@ -105,17 +108,27 @@ class Fragment_Tariflar : Fragment() {
         return root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater): Unit {
-        menuInflater.inflate(R.menu.nav_menu, menu)
-        super.onCreateOptionsMenu(menu, menuInflater)
-//        return true
+//    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater): Unit {
+//        menuInflater.inflate(R.menu.nav_menu, menu)
+//        super.onCreateOptionsMenu(menu, menuInflater)
+////        return true
+//    }
+
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when (item.itemId) {
+//            R.id.nav_phone -> Toast.makeText(context, "Item selected", Toast.LENGTH_SHORT).show()
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
+
+    companion object {
+        fun newInstance() = Fragment_Tariflar()
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.nav_phone -> Toast.makeText(context, "Item selected", Toast.LENGTH_SHORT).show()
-        }
-        return super.onOptionsItemSelected(item)
+
+
+    interface OnBackPressedListner {
+        fun onBackPressed(): Boolean
     }
 
 }

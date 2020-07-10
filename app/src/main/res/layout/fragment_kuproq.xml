@@ -1,18 +1,352 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="none"
     tools:context=".Fragment_Kuproq">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:text="@string/Kuproq"
-        android:textColor="@color/colorAccent"
-        android:textSize="40sp" />
+        android:orientation="vertical">
 
-</RelativeLayout>
+        <include
+            android:id="@+id/toolbar_kuproq"
+            layout="@layout/toolbar_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="130dp"
+            app:cardBackgroundColor="@color/colorWhite"
+            app:cardCornerRadius="10dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <ImageButton
+                    android:id="@+id/kuproq_card_arrow_1"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="24dp"
+                    android:background="@color/colorWhite"
+                    android:src="@drawable/ic_round_arrow_forward"
+                    app:layout_constraintBottom_toTopOf="@+id/view_1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/kuproq_card_txt_yangiliklar"
+                    app:layout_constraintTop_toTopOf="@+id/kuproq_card_txt_yangiliklar" />
+
+                <ImageButton
+                    android:id="@+id/kuproq_card_arrow_2"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/colorWhite"
+                    android:src="@drawable/ic_round_arrow_forward"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/kuproq_card_txt_aksiya"
+                    app:layout_constraintTop_toTopOf="@+id/kuproq_card_txt_aksiya" />
+
+                <ImageButton
+                    android:id="@+id/kuproq_card_arrow_3"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@color/colorWhite"
+                    android:src="@drawable/ic_round_arrow_forward"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/kuproq_card_txt_xabar"
+                    app:layout_constraintTop_toTopOf="@+id/kuproq_card_txt_xabar"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <ImageButton
+                    android:id="@+id/kuproq_card_btn_1"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/ic_more_news"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <ImageButton
+                    android:id="@+id/kuproq_card_btn_2"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="32dp"
+                    android:src="@drawable/ic_more_sales"
+                    app:layout_constraintBottom_toTopOf="@+id/kuproq_card_btn_1"
+                    app:layout_constraintEnd_toEndOf="@+id/kuproq_card_btn_1"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/kuproq_card_btn_1"
+                    app:layout_constraintTop_toBottomOf="@+id/kuproq_card_btn_1"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <ImageButton
+                    android:id="@+id/kuproq_card_btn_3"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="32dp"
+                    android:src="@drawable/ic_more_news"
+                    app:layout_constraintBottom_toTopOf="@+id/kuproq_card_btn_1"
+                    app:layout_constraintEnd_toEndOf="@+id/kuproq_card_btn_2"
+                    app:layout_constraintStart_toStartOf="@+id/kuproq_card_btn_2"
+                    app:layout_constraintTop_toBottomOf="@+id/kuproq_card_btn_2"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/kuproq_card_txt_yangiliklar"
+                    android:layout_width="200dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="Yangiliklar"
+                    android:textColor="#161616"
+                    android:textSize="@dimen/text_size_16sp"
+                    app:layout_constraintBottom_toTopOf="@+id/view_1"
+                    app:layout_constraintStart_toEndOf="@+id/kuproq_card_btn_1"
+                    app:layout_constraintTop_toTopOf="@+id/kuproq_card_btn_1" />
+
+                <TextView
+                    android:id="@+id/kuproq_card_txt_aksiya"
+                    android:layout_width="200dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Aksiyalar"
+                    android:textColor="#161616"
+                    android:textSize="@dimen/text_size_16sp"
+                    app:layout_constraintBottom_toTopOf="@+id/view_2"
+                    app:layout_constraintStart_toEndOf="@+id/kuproq_card_btn_2"
+                    app:layout_constraintTop_toBottomOf="@+id/view_1" />
+
+                <TextView
+                    android:id="@+id/kuproq_card_txt_xabar"
+                    android:layout_width="200dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="Xabarnomalar"
+                    android:textColor="#161616"
+                    android:textSize="@dimen/text_size_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/kuproq_card_btn_3"
+                    app:layout_constraintTop_toBottomOf="@+id/view_2" />
+
+                <View
+                    android:id="@+id/view_1"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/range_line_background"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.538"
+                    app:layout_constraintStart_toStartOf="@+id/kuproq_card_txt_yangiliklar"
+                    app:layout_constraintTop_toBottomOf="@+id/kuproq_card_txt_yangiliklar" />
+
+                <View
+                    android:id="@+id/view_2"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/range_line_background"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/kuproq_card_txt_aksiya"
+                    app:layout_constraintTop_toBottomOf="@+id/kuproq_card_txt_aksiya" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="@color/colorWhite"
+            app:cardCornerRadius="10dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <ImageButton
+                    android:id="@+id/kuproq_card_arrow_4"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/colorWhite"
+                    android:src="@drawable/ic_round_arrow_forward"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/kuproq_card_txt_yordam"
+                    app:layout_constraintTop_toTopOf="@+id/kuproq_card_txt_yordam" />
+
+                <ImageButton
+                    android:id="@+id/kuproq_card_arrow_5"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/colorWhite"
+                    android:src="@drawable/ic_round_arrow_forward"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/kuproq_card_txt_ilova_haqida" />
+
+                <ImageButton
+                    android:id="@+id/kuproq_card_arrow_6"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/colorWhite"
+                    android:src="@drawable/ic_round_arrow_forward"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/kuproq_card_txt_uzimei" />
+
+                <ImageButton
+                    android:id="@+id/kuproq_card_btn_4"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/ic_more_support"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <ImageButton
+                    android:id="@+id/kuproq_card_btn_5"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/ic_more_about"
+                    app:layout_constraintEnd_toEndOf="@+id/kuproq_card_btn_4"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/kuproq_card_btn_4"
+                    app:layout_constraintTop_toBottomOf="@+id/view_3" />
+
+                <ImageButton
+                    android:id="@+id/kuproq_card_btn_6"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/ic_more_imei"
+                    app:layout_constraintEnd_toEndOf="@+id/kuproq_card_btn_5"
+                    app:layout_constraintStart_toStartOf="@+id/kuproq_card_btn_5"
+                    app:layout_constraintTop_toBottomOf="@+id/view_4" />
+
+                <TextView
+                    android:id="@+id/kuproq_card_txt_yordam"
+                    android:layout_width="200dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="40dp"
+                    android:text="Yordam"
+                    android:textColor="#161616"
+                    android:textSize="@dimen/text_size_16sp"
+                    app:layout_constraintBottom_toTopOf="@+id/view_3"
+                    app:layout_constraintStart_toEndOf="@+id/kuproq_card_btn_4"
+                    app:layout_constraintTop_toTopOf="@+id/kuproq_card_btn_4"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/kuproq_card_txt_ilova_haqida"
+                    android:layout_width="200dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="Ilova haqida"
+                    android:textColor="#161616"
+                    android:textSize="@dimen/text_size_16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/kuproq_card_arrow_5"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/kuproq_card_btn_5"
+                    app:layout_constraintTop_toTopOf="@+id/kuproq_card_btn_5" />
+
+                <TextView
+                    android:id="@+id/kuproq_card_txt_uzimei"
+                    android:layout_width="200dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="Uzimei"
+                    android:textColor="#161616"
+                    android:textSize="@dimen/text_size_16sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/kuproq_card_arrow_6"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@+id/kuproq_card_btn_6"
+                    app:layout_constraintTop_toTopOf="@+id/kuproq_card_btn_6" />
+
+                <View
+                    android:id="@+id/view_3"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/range_line_background"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/kuproq_card_txt_yordam"
+                    app:layout_constraintTop_toBottomOf="@+id/kuproq_card_btn_4" />
+
+                <View
+                    android:id="@+id/view_4"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@color/range_line_background"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/kuproq_card_txt_ilova_haqida"
+                    app:layout_constraintTop_toBottomOf="@+id/kuproq_card_txt_ilova_haqida" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>

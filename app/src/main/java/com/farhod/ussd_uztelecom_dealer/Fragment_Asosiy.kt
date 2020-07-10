@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
+import kotlinx.android.synthetic.main.fragment_asosiy.*
 
 class Fragment_Asosiy : Fragment() {
 
@@ -36,6 +37,11 @@ class Fragment_Asosiy : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val root: View = inflater.inflate(R.layout.fragment_asosiy, container, false)
+
+//        btn_asosiy_fr_1.setOnClickListener(listener)
+//        btn_asosiy_fr_2.setOnClickListener(listener)
+//        btn_asosiy_fr_3.setOnClickListener(listener)
+//        txt_asosiy_4.setOnClickListener(listener)
 
         val btnBalans: ImageButton = root.findViewById(R.id.btn_asosiy_fr_1)
         btnBalans.setOnClickListener(listener)
@@ -60,8 +66,9 @@ class Fragment_Asosiy : Fragment() {
         sliderImages.add(SliderData(R.drawable.slider_image))
 
         val adapter = SliderAdapterExample(context, sliderImages)
-
         sliderView.setSliderAdapter(adapter)
+
+//        imageSlider.setSliderAdapter(SliderAdapterExample(context, sliderImages))
 
         sliderView.setIndicatorAnimation(IndicatorAnimationType.THIN_WORM) //set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
         sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
@@ -88,8 +95,9 @@ class Fragment_Asosiy : Fragment() {
         }
     }
 
-    val listener = View.OnClickListener { view ->
-        when (view.getId()) {
+    private val listener = View.OnClickListener { view ->
+        when (view.id) {
+
             R.id.btn_asosiy_fr_1 -> {
                 dialPhone(CHECK_BALANCE)
             }
@@ -105,8 +113,7 @@ class Fragment_Asosiy : Fragment() {
                         arrayOf(Manifest.permission.CALL_PHONE),
                         REQUEST_PHONE_CALL
                     )
-                } else {
-                }
+                } else { }
                 callPhone("$TELEPHONE_SCHEME$COMPANY_PHONE")
             }
 
@@ -129,6 +136,10 @@ class Fragment_Asosiy : Fragment() {
     fun dialPhone(number: String) {
         val intent = Intent(Intent.ACTION_DIAL, Uri.parse(TELEPHONE_SCHEME + Uri.encode(number)))
         startActivity(intent)
+    }
+
+    companion object {
+        fun newInstance() = Fragment_Asosiy()
     }
 
 }

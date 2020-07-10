@@ -21,4 +21,7 @@ class Fragment_Paketlar : Fragment() {
         return inflater.inflate(R.layout.fragment_paketlar, container, false)
     }
 
+    companion object {
+        fun newInstance() = Fragment_Paketlar()
+    }
 }

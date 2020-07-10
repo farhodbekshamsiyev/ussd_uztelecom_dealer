@@ -1,11 +1,11 @@
 package com.farhod.ussd_uztelecom_dealer
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -21,10 +21,10 @@ class MainActivity : AppCompatActivity() {
         }
         updateHandler.postDelayed(runnable, 1000)
 
-        var joriyFragment: Fragment = Fragment_Asosiy()
+        var joriyFragment: Fragment = Fragment_Asosiy.newInstance()
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.frame_layout, joriyFragment)
+            .replace(R.id.frame_layout, joriyFragment, joriyFragment.tag)
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
             .commit()
 
@@ -33,27 +33,36 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
 
                 R.id.asosiy -> {
-                    joriyFragment = Fragment_Asosiy()
+//                    currentFragment = supportFragmentManager.findFragmentById(R.id.frame_layout)
+                    joriyFragment = Fragment_Asosiy.newInstance()
                 }
                 R.id.tariflar -> {
-                    joriyFragment = Fragment_Tariflar()
+//                    currentFragment = supportFragmentManager.findFragmentById(R.id.frame_layout)
+                    joriyFragment = Fragment_Tariflar.newInstance()
                 }
                 R.id.xizmatlar -> {
-                    joriyFragment = Fragment_Xizmatlar()
+//                    currentFragment = supportFragmentManager.findFragmentById(R.id.frame_layout)
+                    joriyFragment = Fragment_Xizmatlar.newInstance()
                 }
                 R.id.paketlar -> {
-                    joriyFragment = Fragment_Paketlar()
+//                    currentFragment = supportFragmentManager.findFragmentById(R.id.frame_layout)
+                    joriyFragment = Fragment_Paketlar.newInstance()
                 }
                 R.id.kuproq -> {
-                    joriyFragment = Fragment_Kuproq()
+//                    currentFragment = supportFragmentManager.findFragmentById(R.id.frame_layout)
+                    joriyFragment = Fragment_Kuproq.newInstance()
                 }
 
             }
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.frame_layout, joriyFragment)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .commit()
+            if (!joriyFragment.isVisible) {
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.frame_layout, joriyFragment, joriyFragment.tag)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .commit()
+               } else {
+                Toast.makeText(this, joriyFragment.toString(), Toast.LENGTH_SHORT).show()
+            }
 
             true
         }

@@ -7,16 +7,23 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.cardview_1.view.*
 
 class RecycleriViewAdapter(val tariffs: ArrayList<TarifData>, var context: Context?) :
     RecyclerView.Adapter<RecycleriViewAdapter.ViewHolder>() {
 
     class ViewHolder(item: View) : RecyclerView.ViewHolder(item) {
-        var TITLE: TextView = item.findViewById(R.id.card_title)
-        var MGB: TextView = item.findViewById(R.id.card_txt_mgb)
-        var MIN: TextView = item.findViewById(R.id.card_txt_min)
-        var SMS: TextView = item.findViewById(R.id.card_txt_sms)
-        var NARX: TextView = item.findViewById(R.id.card_txt_narxi)
+//        var TITLE: TextView = item.findViewById(R.id.card_title)
+//        var MGB: TextView = item.findViewById(R.id.card_txt_mgb)
+//        var MIN: TextView = item.findViewById(R.id.card_txt_min)
+//        var SMS: TextView = item.findViewById(R.id.card_txt_sms)
+//        var NARX: TextView = item.findViewById(R.id.card_txt_narxi)
+
+        var TITLE: TextView = item. card_title
+        var MGB: TextView = item.card_txt_mgb
+        var MIN: TextView = item.card_txt_min
+        var SMS: TextView = item.card_txt_sms
+        var NARX: TextView = item.card_txt_narxi
 
         var view: View = item
     }
