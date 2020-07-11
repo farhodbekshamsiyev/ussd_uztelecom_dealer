@@ -4,18 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Fragment_Xizmatlar">
+    tools:context=".WebView">
 
     <include
-        android:id="@+id/toolbar_xizmatlar"
+        android:id="@+id/toolbar_webview"
         layout="@layout/toolbar_1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
-    <include
-        android:id="@+id/recycler_xizmatlar"
-        layout="@layout/recyclerivew_1"
+    <WebView
+        android:id="@+id/web_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

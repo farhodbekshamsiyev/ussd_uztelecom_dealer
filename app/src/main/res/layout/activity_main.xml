@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main_full_screen"
     tools:context=".MainActivity">
 
     <FrameLayout
@@ -16,8 +17,8 @@
 
     <include
         layout="@layout/layout_loading"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center|center_horizontal" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

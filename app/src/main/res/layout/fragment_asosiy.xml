@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame_layout_asosiy"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragment_Asosiy">
@@ -99,7 +100,7 @@
                     android:layout_marginStart="40dp"
                     android:layout_marginLeft="40dp"
                     android:gravity="center"
-                    android:text="Kabinet"
+                    android:text="Diller"
                     android:textSize="@dimen/text_size_14sp"
                     app:layout_constraintBaseline_toBaselineOf="@id/txt_asosiy_2"
                     app:layout_constraintStart_toEndOf="@+id/txt_asosiy_2"

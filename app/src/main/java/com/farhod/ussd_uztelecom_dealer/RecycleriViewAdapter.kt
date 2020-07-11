@@ -13,13 +13,8 @@ class RecycleriViewAdapter(val tariffs: ArrayList<TarifData>, var context: Conte
     RecyclerView.Adapter<RecycleriViewAdapter.ViewHolder>() {
 
     class ViewHolder(item: View) : RecyclerView.ViewHolder(item) {
-//        var TITLE: TextView = item.findViewById(R.id.card_title)
-//        var MGB: TextView = item.findViewById(R.id.card_txt_mgb)
-//        var MIN: TextView = item.findViewById(R.id.card_txt_min)
-//        var SMS: TextView = item.findViewById(R.id.card_txt_sms)
-//        var NARX: TextView = item.findViewById(R.id.card_txt_narxi)
 
-        var TITLE: TextView = item. card_title
+        var TITLE: TextView = item.card_title
         var MGB: TextView = item.card_txt_mgb
         var MIN: TextView = item.card_txt_min
         var SMS: TextView = item.card_txt_sms

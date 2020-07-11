@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="kuproq_card_yangiliklar"/>
+    <item type="id" name="kuproq_card_aksiya"/>
+    <item type="id" name="kuproq_card_xabar"/>
+    <item type="id" name="kuproq_card_yordam"/>
+    <item type="id" name="kuproq_card_ilova_haqida"/>
+    <item type="id" name="kuproq_card_uzimei"/>
+
+</resources>

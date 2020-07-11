@@ -1,10 +1,12 @@
 package com.farhod.ussd_uztelecom_dealer
 
+import android.graphics.Typeface
 import android.os.Bundle
 import android.os.Handler
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -18,7 +20,8 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        var typeFace: Typeface? = Typeface.createFromAsset(assets, "product_sans_medium.ttf")
+        //setTypeFace ni topa olmayapman
         Handler().postDelayed(this::offDisplay, 1000L)
 
         if (savedInstanceState == null) {
@@ -67,7 +70,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     private fun openFragmentKuproq() {
         if (Fragment_Kuproq::class.java != currentFragment?.javaClass) {
-            startFragment(Fragment_Paketlar.newInstance())
+            startFragment(Fragment_Kuproq.newInstance())
         }
     }
 
@@ -86,4 +89,5 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     private fun offDisplay() {
         linear_layout_loading.visibility = View.INVISIBLE
     }
+
 }

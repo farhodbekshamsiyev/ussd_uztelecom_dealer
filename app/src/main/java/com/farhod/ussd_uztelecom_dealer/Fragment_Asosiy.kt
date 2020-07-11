@@ -43,10 +43,7 @@ class Fragment_Asosiy : Fragment() {
         sliderImages.add(SliderData(R.drawable.slider_image))
         sliderImages.add(SliderData(R.drawable.slider_image))
 
-        val adapter = SliderAdapterExample(context, sliderImages)
-        imageSlider.setSliderAdapter(adapter)
-
-//        imageSlider.setSliderAdapter(SliderAdapterExample(context, sliderImages))
+        imageSlider.setSliderAdapter(SliderAdapterExample(context, sliderImages))
 
         imageSlider.setIndicatorAnimation(IndicatorAnimationType.THIN_WORM) //set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
         imageSlider.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
@@ -99,8 +96,10 @@ class Fragment_Asosiy : Fragment() {
             }
 
             R.id.txt_asosiy_4 -> {
-                Toast.makeText(activity, "Shaxsiy kabinetga kirish", Toast.LENGTH_SHORT)
-                    .show()
+                val intent = Intent(context, WebView::class.java)
+                intent.putExtra("param1", "Shaxsiy kabinetga kirish")
+                intent.putExtra("param2", getString(R.string.url_shaxsiy_kabinet))
+                startActivity(intent)
             }
         }
     }

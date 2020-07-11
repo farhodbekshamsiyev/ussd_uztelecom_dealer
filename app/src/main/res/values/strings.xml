@@ -1,9 +1,16 @@
 <resources>
     <string name="app_name">USSD Uzmobile</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="Asosiy">Asosiy fragment</string>
     <string name="Tariflar">Tariflar fragment</string>
     <string name="Xizmatlar">Xizmatlar fragment</string>
     <string name="Paketlar">Paketlar fragment</string>
     <string name="Kuproq">Kuproq fragment</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="url_xabar">https://uztelecom.uz/uz/yangiliklar/xabarnomalar</string>
+    <string name="url_yordam">https://uztelecom.uz/uz/qayta-aloqa/</string>
+    <string name="url_yangiliklar">https://uztelecom.uz/uz/yangiliklar/yangiliklar</string>
+    <string name="url_shaxsiy_kabinet">https://scc.uzmobile.uz/ps/scc/login.php</string>
+    <string name="url_oferta">https://esb.uztelecom.uz/static/uz/terms.html</string>
+    <string name="url_aksiya">https://uztelecom.uz/uz/yangiliklar/aksiyalar</string>
+    <string name="url_uzimei">https://uzimei.uz/</string>
 </resources>

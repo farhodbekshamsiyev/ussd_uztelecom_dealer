@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.smarteist.autoimageslider.SliderViewAdapter
+import kotlinx.android.synthetic.main.image_slider_item.view.*
 
 
 class SliderAdapterExample(var context: Context?, var mSliderItems: MutableList<SliderData>) :
@@ -16,7 +17,7 @@ class SliderAdapterExample(var context: Context?, var mSliderItems: MutableList<
     inner class SliderAdapterVH(itemView: View) : SliderViewAdapter.ViewHolder(itemView) {
 
         var view = itemView
-        var imageViewItem: ImageView = itemView.findViewById(R.id.slider_image_item)
+        var imageViewItem: ImageView = itemView.slider_image_item
 
     }
 

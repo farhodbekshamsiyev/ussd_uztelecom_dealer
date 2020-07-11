@@ -2,6 +2,7 @@ package com.farhod.ussd_uztelecom_dealer
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
@@ -9,10 +10,11 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_tariflar.*
 
 
 class Fragment_Tariflar : Fragment() {
-    //salom
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -23,14 +25,22 @@ class Fragment_Tariflar : Fragment() {
     ): View? {
         setHasOptionsMenu(true)
         val root: View = inflater.inflate(R.layout.fragment_tariflar, container, false)
-        val toolbar: Toolbar = root.findViewById(R.id.toolbar_tariflar)
-        (activity as AppCompatActivity).setSupportActionBar(toolbar)
+
+        return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        (activity as AppCompatActivity).setSupportActionBar(toolbar_tariflar as Toolbar?)
         (activity as AppCompatActivity).supportActionBar?.title = "Barcha tariflar"
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
 //        toolbar.inflateMenu(R.menu.nav_menu)
 
-        val recyclerView: RecyclerView = root.findViewById(R.id.recycler_tariflar)
+//        recycler_tariflar.layoutParams
+//        nega recycler_tariflar im ni maydonlari chiqmayapti
+//        misol uchun layoutManager degan maydoni yo'qolib qolmoqda
+        val recyclerView: RecyclerView = view.findViewById(R.id.recycler_tariflar)
         recyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
@@ -101,33 +111,23 @@ class Fragment_Tariflar : Fragment() {
             )
         )
 
-        val adapter = RecycleriViewAdapter(tariflar, context)
-        recyclerView.adapter = adapter
-
-        return root
+        recyclerView.adapter = RecycleriViewAdapter(tariflar, context)
     }
 
 //    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater): Unit {
 //        menuInflater.inflate(R.menu.nav_menu, menu)
 //        super.onCreateOptionsMenu(menu, menuInflater)
-////        return true
 //    }
 
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        when (item.itemId) {
-//            R.id.nav_phone -> Toast.makeText(context, "Item selected", Toast.LENGTH_SHORT).show()
-//        }
-//        return super.onOptionsItemSelected(item)
-//    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> (activity as AppCompatActivity).supportFragmentManager.popBackStack()
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     companion object {
         fun newInstance() = Fragment_Tariflar()
-    }
-
-
-
-    interface OnBackPressedListner {
-        fun onBackPressed(): Boolean
     }
 
 }
