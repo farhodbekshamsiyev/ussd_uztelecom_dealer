@@ -9,4 +9,5 @@
     <color name="colorTextPrimary">#ff343434</color>
     <color name="colorAccent">#ff2680f1</color>
     <color name="range_line_background">#ffcccccc</color>
+    <color name="range_line_background2">#ffe5e5e5</color>
 </resources>

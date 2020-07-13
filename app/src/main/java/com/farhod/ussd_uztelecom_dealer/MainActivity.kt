@@ -1,27 +1,29 @@
 package com.farhod.ussd_uztelecom_dealer
 
-import android.graphics.Typeface
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.view.MenuItem
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import com.farhod.ussd_uztelecom_dealer.fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_loading.*
+
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     private var currentFragment: Fragment? = null
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var typeFace: Typeface? = Typeface.createFromAsset(assets, "product_sans_medium.ttf")
-        //setTypeFace ni topa olmayapman
+
         Handler().postDelayed(this::offDisplay, 1000L)
 
         if (savedInstanceState == null) {
@@ -88,6 +90,19 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     private fun offDisplay() {
         linear_layout_loading.visibility = View.INVISIBLE
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    public fun changeStatusBarColor(boolean: Boolean) {
+        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ) {
+            if(boolean) {
+                window.statusBarColor = getColor(R.color.colorWhite)
+                window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+            } else {
+                window.statusBarColor = getColor(R.color.colorPrimary)
+                window.decorView.systemUiVisibility = -0x80000000
+            }
+        }
     }
 
 }

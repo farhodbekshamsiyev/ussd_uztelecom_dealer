@@ -1,17 +1,24 @@
-package com.farhod.ussd_uztelecom_dealer
+package com.farhod.ussd_uztelecom_dealer.fragments
 
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import com.farhod.ussd_uztelecom_dealer.MainActivity
+import com.farhod.ussd_uztelecom_dealer.R
+import com.farhod.ussd_uztelecom_dealer.WebView
+import com.farhod.ussd_uztelecom_dealer.adapter.SliderAdapterExample
+import com.farhod.ussd_uztelecom_dealer.data_classes.SliderData
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
@@ -27,8 +34,11 @@ class Fragment_Asosiy : Fragment() {
         return inflater.inflate(R.layout.fragment_asosiy, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        (activity as MainActivity).changeStatusBarColor(true)
 
         btn_asosiy_fr_1.setOnClickListener(listener)
         btn_asosiy_fr_2.setOnClickListener(listener)
@@ -37,13 +47,38 @@ class Fragment_Asosiy : Fragment() {
 
         val sliderImages = ArrayList<SliderData>()
 
-        sliderImages.add(SliderData(R.drawable.slider_image))
-        sliderImages.add(SliderData(R.drawable.slider_image))
-        sliderImages.add(SliderData(R.drawable.slider_image))
-        sliderImages.add(SliderData(R.drawable.slider_image))
-        sliderImages.add(SliderData(R.drawable.slider_image))
+        sliderImages.add(
+            SliderData(
+                R.drawable.slider_image
+            )
+        )
+        sliderImages.add(
+            SliderData(
+                R.drawable.slider_image
+            )
+        )
+        sliderImages.add(
+            SliderData(
+                R.drawable.slider_image
+            )
+        )
+        sliderImages.add(
+            SliderData(
+                R.drawable.slider_image
+            )
+        )
+        sliderImages.add(
+            SliderData(
+                R.drawable.slider_image
+            )
+        )
 
-        imageSlider.setSliderAdapter(SliderAdapterExample(context, sliderImages))
+        imageSlider.setSliderAdapter(
+            SliderAdapterExample(
+                context,
+                sliderImages
+            )
+        )
 
         imageSlider.setIndicatorAnimation(IndicatorAnimationType.THIN_WORM) //set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
         imageSlider.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION)
@@ -122,7 +157,8 @@ class Fragment_Asosiy : Fragment() {
         const val REQUEST_PHONE_CALL = 1
 
         @JvmStatic
-        fun newInstance() = Fragment_Asosiy()
+        fun newInstance() =
+            Fragment_Asosiy()
     }
 
 }

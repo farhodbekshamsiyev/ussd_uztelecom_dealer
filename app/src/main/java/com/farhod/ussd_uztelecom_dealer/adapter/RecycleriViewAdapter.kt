@@ -1,4 +1,4 @@
-package com.farhod.ussd_uztelecom_dealer
+package com.farhod.ussd_uztelecom_dealer.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.farhod.ussd_uztelecom_dealer.R
+import com.farhod.ussd_uztelecom_dealer.data_classes.TarifData
 import kotlinx.android.synthetic.main.cardview_1.view.*
 
 class RecycleriViewAdapter(val tariffs: ArrayList<TarifData>, var context: Context?) :
@@ -29,7 +31,9 @@ class RecycleriViewAdapter(val tariffs: ArrayList<TarifData>, var context: Conte
     ): ViewHolder {
         var view = LayoutInflater.from(parent.context).inflate(R.layout.cardview_1, parent, false)
 
-        return ViewHolder(view)
+        return ViewHolder(
+            view
+        )
     }
 
     override fun getItemCount(): Int {

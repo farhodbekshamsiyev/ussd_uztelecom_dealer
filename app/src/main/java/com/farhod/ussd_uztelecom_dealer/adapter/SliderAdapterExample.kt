@@ -1,4 +1,4 @@
-package com.farhod.ussd_uztelecom_dealer
+package com.farhod.ussd_uztelecom_dealer.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.farhod.ussd_uztelecom_dealer.R
+import com.farhod.ussd_uztelecom_dealer.data_classes.SliderData
 import com.smarteist.autoimageslider.SliderViewAdapter
 import kotlinx.android.synthetic.main.image_slider_item.view.*
 

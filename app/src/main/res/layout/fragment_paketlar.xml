@@ -1,18 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment_Paketlar">
+    android:orientation="vertical"
+    tools:context=".fragments.Fragment_Paketlar">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/paketlar_tablayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:text="@string/Paketlar"
-        android:textColor="@color/colorAccent"
-        android:textSize="40sp" />
+        android:layout_height="56dp"
+        android:background="@color/colorPrimaryDark"
+        android:paddingBottom="6dp"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/colorWhite"
+        app:tabMaxWidth="0dp"
+        app:tabSelectedTextColor="@color/colorWhite"
+        app:tabTextAppearance="?android:attr/textAppearanceMedium"
+        app:tabTextColor="@color/colorTransparentLight"
+        app:textAllCaps="false" />
 
-</RelativeLayout>
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/paketlar_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+
+</LinearLayout>

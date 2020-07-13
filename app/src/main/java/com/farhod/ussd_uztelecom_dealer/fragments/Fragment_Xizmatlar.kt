@@ -1,15 +1,20 @@
-package com.farhod.ussd_uztelecom_dealer
+package com.farhod.ussd_uztelecom_dealer.fragments
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_tariflar.*
+import com.farhod.ussd_uztelecom_dealer.MainActivity
+import com.farhod.ussd_uztelecom_dealer.R
+import com.farhod.ussd_uztelecom_dealer.adapter.RecyclerViewAdapter_Xizmatlar
+import com.farhod.ussd_uztelecom_dealer.data_classes.XizmatData
 import kotlinx.android.synthetic.main.fragment_xizmatlar.*
 
 
@@ -17,13 +22,16 @@ class Fragment_Xizmatlar : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        (activity as MainActivity).changeStatusBarColor(false)
+
         setHasOptionsMenu(true)
         val root: View = inflater.inflate(R.layout.fragment_xizmatlar, container, false)
 
@@ -83,74 +91,79 @@ class Fragment_Xizmatlar : Fragment() {
                 "40 so'm kuniga"
             )
         )
-        xizmatlar_array.add(
-            XizmatData(
-                "Qabul qilinmagan qo'ng'iroq",
-                "Tarmoqda bo'lmagan paytda o'tkazib yuborilgan kiruvchi qo'ng'iroqlar SMS" +
-                        " orqali yuboriladi",
-                "40 so'm kuniga"
-            )
-        )
-        xizmatlar_array.add(
-            XizmatData(
-                "Limitsiz ovoz",
-                "GSM va CDMA tarmoqlari ichida bepul qo'ng'iroqlarni amalga oshirish imko" +
-                        "bibi beradi.",
-                "210 so'm kuniga"
-            )
-        )
-        xizmatlar_array.add(
-            XizmatData(
-                "Tungi qo'ng'iroqlar",
-                "Xizmatni faollashtirishdan keyin, tarmoq (GSM/CDMA) ichida qo'ng'iroqlarni" +
-                        " narxlamaydi",
-                "42 so'm kuniga"
-            )
-        )
-        xizmatlar_array.add(
-            XizmatData(
-                "Chaqiruvni kutish",
-                "Aktiv qo'ng'iroqni saqlagan holda boshqa qo'ng'iroqqa o'tish imkoniyati",
-                "0 so'm oyiga"
-            )
-        )
-        xizmatlar_array.add(
-            XizmatData(
-                "4G tarmog'i",
-                "Internetdan yuqori tezlikda foydalaning",
-                "0 so'm oyiga"
-            )
-        )
-        xizmatlar_array.add(
-            XizmatData(
-                "Oila uchun",
-                "Oila uchun guruhidagi raqamlar uchun cheklanmagan ovozli qo'ng'iroqlar",
-                "2105,18 so'm oyiga"
-            )
-        )
-        xizmatlar_array.add(
-            XizmatData(
-                "Konferens aloqa",
-                "Ushbu xizmat bir vaqtning o'zida bir necha abonent bilan muloqot qilishga" +
-                        " ruxsat beradi. Xizmatni o'rnatilgan bo'lsa, 5 tagacha abonent o'zaro muloqot" +
-                        "qilishi mumkin",
-                "0 so'm oyiga"
-            )
-        )
-        xizmatlar_array.add(
-            XizmatData(
-                "EXTRA balans",
-                "Agar sizning balansingiz nolga yaqinlashib qolgan bo'lsa, u holda \"EXTRA" +
-                        " balans\" xizmati bir zumda hisobingizni 1000 so'm yoki undan ortiq miqdor" +
-                        "ida to'ldirishingizga yordam beradi.",
-                "0 so'm oyiga"
-            )
-        )
+//        xizmatlar_array.add(
+//            XizmatData(
+//                "Qabul qilinmagan qo'ng'iroq",
+//                "Tarmoqda bo'lmagan paytda o'tkazib yuborilgan kiruvchi qo'ng'iroqlar SMS" +
+//                        " orqali yuboriladi",
+//                "40 so'm kuniga"
+//            )
+//        )
+//        xizmatlar_array.add(
+//            XizmatData(
+//                "Limitsiz ovoz",
+//                "GSM va CDMA tarmoqlari ichida bepul qo'ng'iroqlarni amalga oshirish imko" +
+//                        "bibi beradi.",
+//                "210 so'm kuniga"
+//            )
+//        )
+//        xizmatlar_array.add(
+//            XizmatData(
+//                "Tungi qo'ng'iroqlar",
+//                "Xizmatni faollashtirishdan keyin, tarmoq (GSM/CDMA) ichida qo'ng'iroqlarni" +
+//                        " narxlamaydi",
+//                "42 so'm kuniga"
+//            )
+//        )
+//        xizmatlar_array.add(
+//            XizmatData(
+//                "Chaqiruvni kutish",
+//                "Aktiv qo'ng'iroqni saqlagan holda boshqa qo'ng'iroqqa o'tish imkoniyati",
+//                "0 so'm oyiga"
+//            )
+//        )
+//        xizmatlar_array.add(
+//            XizmatData(
+//                "4G tarmog'i",
+//                "Internetdan yuqori tezlikda foydalaning",
+//                "0 so'm oyiga"
+//            )
+//        )
+//        xizmatlar_array.add(
+//            XizmatData(
+//                "Oila uchun",
+//                "Oila uchun guruhidagi raqamlar uchun cheklanmagan ovozli qo'ng'iroqlar",
+//                "2105,18 so'm oyiga"
+//            )
+//        )
+//        xizmatlar_array.add(
+//            XizmatData(
+//                "Konferens aloqa",
+//                "Ushbu xizmat bir vaqtning o'zida bir necha abonent bilan muloqot qilishga" +
+//                        " ruxsat beradi. Xizmatni o'rnatilgan bo'lsa, 5 tagacha abonent o'zaro muloqot" +
+//                        "qilishi mumkin",
+//                "0 so'm oyiga"
+//            )
+//        )
+//        xizmatlar_array.add(
+//            XizmatData(
+//                "EXTRA balans",
+//                "Agar sizning balansingiz nolga yaqinlashib qolgan bo'lsa, u holda \"EXTRA" +
+//                        " balans\" xizmati bir zumda hisobingizni 1000 so'm yoki undan ortiq miqdor" +
+//                        "ida to'ldirishingizga yordam beradi.",
+//                "0 so'm oyiga"
+//            )
+//        )
 
-        recyclerView.adapter = RecyclerViewAdapter_Xizmatlar(xizmatlar_array, context)
+        recyclerView.adapter =
+            RecyclerViewAdapter_Xizmatlar(
+                xizmatlar_array,
+                context
+            )
     }
 
     companion object {
-        fun newInstance() = Fragment_Xizmatlar()
+        fun newInstance() =
+            Fragment_Xizmatlar()
     }
 }

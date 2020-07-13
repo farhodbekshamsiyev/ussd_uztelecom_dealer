@@ -1,15 +1,21 @@
-package com.farhod.ussd_uztelecom_dealer
+package com.farhod.ussd_uztelecom_dealer.fragments
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.farhod.ussd_uztelecom_dealer.MainActivity
+import com.farhod.ussd_uztelecom_dealer.R
+import com.farhod.ussd_uztelecom_dealer.adapter.RecycleriViewAdapter
+import com.farhod.ussd_uztelecom_dealer.data_classes.TarifData
 import kotlinx.android.synthetic.main.fragment_tariflar.*
 
 
@@ -19,11 +25,15 @@ class Fragment_Tariflar : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         setHasOptionsMenu(true)
+
+        (activity as MainActivity).changeStatusBarColor(false)
+
         val root: View = inflater.inflate(R.layout.fragment_tariflar, container, false)
 
         return root
@@ -100,7 +110,15 @@ class Fragment_Tariflar : Fragment() {
                 "119 700 so\'m oyiga"
             )
         )
-        tariflar.add(TarifData("Royal", "Cheksiz*", "Cheksiz*", "5000 SMS", "149 900 so\'m oyiga"))
+        tariflar.add(
+            TarifData(
+                "Royal",
+                "Cheksiz*",
+                "Cheksiz*",
+                "5000 SMS",
+                "149 900 so\'m oyiga"
+            )
+        )
         tariflar.add(
             TarifData(
                 "Flash Upgrade",
@@ -111,7 +129,11 @@ class Fragment_Tariflar : Fragment() {
             )
         )
 
-        recyclerView.adapter = RecycleriViewAdapter(tariflar, context)
+        recyclerView.adapter =
+            RecycleriViewAdapter(
+                tariflar,
+                context
+            )
     }
 
 //    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater): Unit {
@@ -127,7 +149,8 @@ class Fragment_Tariflar : Fragment() {
     }
 
     companion object {
-        fun newInstance() = Fragment_Tariflar()
+        fun newInstance() =
+            Fragment_Tariflar()
     }
 
 }
