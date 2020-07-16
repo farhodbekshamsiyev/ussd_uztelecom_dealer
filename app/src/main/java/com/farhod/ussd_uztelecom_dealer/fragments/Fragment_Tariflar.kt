@@ -1,29 +1,36 @@
 package com.farhod.ussd_uztelecom_dealer.fragments
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.farhod.ussd_uztelecom_dealer.MainActivity
 import com.farhod.ussd_uztelecom_dealer.R
+import com.farhod.ussd_uztelecom_dealer.adapter.ExpandableAdapter
 import com.farhod.ussd_uztelecom_dealer.adapter.RecycleriViewAdapter
+import com.farhod.ussd_uztelecom_dealer.data_classes.Group_Expandable
 import com.farhod.ussd_uztelecom_dealer.data_classes.TarifData
+import com.farhod.ussd_uztelecom_dealer.inputStreamToString
+import com.farhod.ussd_uztelecom_dealer.model.ChildItemDataClass
+import com.farhod.ussd_uztelecom_dealer.model.ModelGSON
+import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_daqiqalar.*
 import kotlinx.android.synthetic.main.fragment_tariflar.*
 
 
 class Fragment_Tariflar : Fragment() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView(
@@ -31,12 +38,7 @@ class Fragment_Tariflar : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         setHasOptionsMenu(true)
-
-        (activity as MainActivity).changeStatusBarColor(false)
-
-        val root: View = inflater.inflate(R.layout.fragment_tariflar, container, false)
-
-        return root
+        return inflater.inflate(R.layout.fragment_tariflar, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,93 +49,18 @@ class Fragment_Tariflar : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
 //        toolbar.inflateMenu(R.menu.nav_menu)
 
-//        recycler_tariflar.layoutParams
-//        nega recycler_tariflar im ni maydonlari chiqmayapti
-//        misol uchun layoutManager degan maydoni yo'qolib qolmoqda
-        val recyclerView: RecyclerView = view.findViewById(R.id.recycler_tariflar)
-        recyclerView.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        val preferences = (activity as AppCompatActivity).getSharedPreferences("ussd_dealer", Context.MODE_PRIVATE)
+        val strData = preferences.getString("data", "")
 
-        val tariflar = ArrayList<TarifData>()
+//        val myJson =
+//            inputStreamToString((activity as AppCompatActivity).resources.openRawResource(R.raw.ussdcodes))
+        val myModel = Gson().fromJson(strData, ModelGSON::class.java)
 
-        tariflar.add(
-            TarifData(
-                "Oddiy 10",
-                "10 MB",
-                "10 MIN",
-                "10 SMS",
-                "10 000 so\'m oyiga"
-            )
-        )
-        tariflar.add(
-            TarifData(
-                "Street",
-                "6500 MB",
-                "750 MIN",
-                "750 SMS",
-                "39 900 so\'m oyiga"
-            )
-        )
-        tariflar.add(
-            TarifData(
-                "Onlime",
-                "10 000 MB",
-                "1000 MIN",
-                "1000 SMS",
-                "49 900 so\'m oyiga"
-            )
-        )
-        tariflar.add(
-            TarifData(
-                "Flash",
-                "16 000 MB",
-                "1500 MIN",
-                "1500 SMS",
-                "69 900 so\'m oyiga"
-            )
-        )
-        tariflar.add(
-            TarifData(
-                "Ishbilarmon",
-                "25 000 MB",
-                "Cheksiz",
-                "3000 SMS",
-                "99 000 so\'m oyiga"
-            )
-        )
-        tariflar.add(
-            TarifData(
-                "Street Upgrade",
-                "20 000 MB",
-                "3000 MIN",
-                "3000 SMS",
-                "119 700 so\'m oyiga"
-            )
-        )
-        tariflar.add(
-            TarifData(
-                "Royal",
-                "Cheksiz*",
-                "Cheksiz*",
-                "5000 SMS",
-                "149 900 so\'m oyiga"
-            )
-        )
-        tariflar.add(
-            TarifData(
-                "Flash Upgrade",
-                "56 000 MB",
-                "6000 MIN",
-                "6000 SMS",
-                "209 700 so\'m oyiga"
-            )
-        )
+        val listItem = ArrayList<ChildItemDataClass>()
+        myModel?.barcha?.standartPaketlar?.let { listItem.addAll(it) }
 
-        recyclerView.adapter =
-            RecycleriViewAdapter(
-                tariflar,
-                context
-            )
+        recycler_tariflar.layoutManager = LinearLayoutManager(context)
+        recycler_tariflar.adapter = RecycleriViewAdapter(listItem, context)
     }
 
 //    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater): Unit {
@@ -143,7 +70,10 @@ class Fragment_Tariflar : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            android.R.id.home -> (activity as AppCompatActivity).supportFragmentManager.popBackStack()
+            android.R.id.home -> {
+                (activity as MainActivity).btm_nav_view.selectedItemId = R.id.asosiy
+                (activity as MainActivity).startFragment(Fragment_Asosiy.newInstance())
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -152,5 +82,4 @@ class Fragment_Tariflar : Fragment() {
         fun newInstance() =
             Fragment_Tariflar()
     }
-
 }

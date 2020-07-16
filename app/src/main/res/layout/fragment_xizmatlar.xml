@@ -10,12 +10,13 @@
         android:id="@+id/toolbar_xizmatlar"
         layout="@layout/toolbar_1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
-    <include
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_xizmatlar"
-        layout="@layout/recyclerivew_1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:background="@color/colorTransparent"
+        android:scrollbars="none" />
 
 </LinearLayout>

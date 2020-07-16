@@ -12,14 +12,18 @@
         android:roundIcon="@drawable/uzmobile_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WebView">
+        <activity android:name=".Details">
+
+        </activity>
+        <activity
+            android:name=".WebView">
 
         </activity>
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"  />
+                <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

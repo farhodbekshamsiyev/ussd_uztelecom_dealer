@@ -27,7 +27,6 @@ class Fragment_Paketlar : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (activity as MainActivity).changeStatusBarColor(false)
         return inflater.inflate(R.layout.fragment_paketlar, container, false)
     }
 
@@ -40,7 +39,7 @@ class Fragment_Paketlar : Fragment() {
             lifecycle,
             3
         )
-//        paketlar_viewpager.isUserInputEnabled = true
+        paketlar_viewpager.isUserInputEnabled = true
         TabLayoutMediator(paketlar_tablayout, paketlar_viewpager) { tab, position ->
             when (position) {
                 0 -> tab.text = "Internet"

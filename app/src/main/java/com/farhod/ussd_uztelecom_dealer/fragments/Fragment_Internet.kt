@@ -1,15 +1,24 @@
 package com.farhod.ussd_uztelecom_dealer.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.farhod.ussd_uztelecom_dealer.R
-import com.farhod.ussd_uztelecom_dealer.adapter.ExpandableCardviewAdapter
-import com.farhod.ussd_uztelecom_dealer.data_classes.ExpandableData
+import com.farhod.ussd_uztelecom_dealer.adapter.ExpandableAdapter
+import com.farhod.ussd_uztelecom_dealer.data_classes.Group_Expandable
+import com.farhod.ussd_uztelecom_dealer.inputStreamToString
+import com.farhod.ussd_uztelecom_dealer.model.ChildItemDataClass
+import com.farhod.ussd_uztelecom_dealer.model.ModelGSON
+import com.google.gson.Gson
+import kotlinx.android.synthetic.main.fragment_internet.*
+
+//import com.farhod.ussd_uztelecom_dealer.adapter.ExpandableCardviewAdapter
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -30,139 +39,47 @@ class Fragment_Internet : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_internet, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val itemList = mutableListOf<ExpandableData>()
-        itemList.add(ExpandableData(ExpandableCardviewAdapter.PARENT, "Standart paketlar"))
-        itemList.add(
-            ExpandableData(
-                ExpandableCardviewAdapter.CHILD,
-                title = "500 Megabayt",
-                description = "To'plamning amal qilish muddati ulanish kunidan boshlab 30 kun. Qolgan trafik keyingi oyga o'tmaydi",
-                costs = "10 000 so'm"
-            )
-        )
-        itemList.add(
-            ExpandableData(
-                ExpandableCardviewAdapter.CHILD,
-                title = "1500 Megabayt",
-                description = "To'plamning amal qilish muddati ulanish kunidan boshlab 30 kun. Qolgan trafik keyingi oyga o'tmaydi",
-                costs = "15 000 so'm"
-            )
-        )
-        itemList.add(
-            ExpandableData(
-                ExpandableCardviewAdapter.CHILD,
-                title = "3000 Megabayt",
-                description = "To'plamning amal qilish muddati ulanish kunidan boshlab 30 kun. Qolgan trafik keyingi oyga o'tmaydi",
-                costs = "24 000 so'm"
-            )
-        )
-        itemList.add(
-            ExpandableData(
-                ExpandableCardviewAdapter.CHILD,
-                title = "5000 Megabayt",
-                description = "To'plamning amal qilish muddati ulanish kunidan boshlab 30 kun. Qolgan trafik keyingi oyga o'tmaydi",
-                costs = "32 000 so'm"
-            )
-        )
-        itemList.add(
-            ExpandableData(
-                ExpandableCardviewAdapter.CHILD,
-                title = "8000 Megabayt",
-                description = "To'plamning amal qilish muddati ulanish kunidan boshlab 30 kun. Qolgan trafik keyingi oyga o'tmaydi",
-                costs = "41 000 so'm"
-            )
-        )
-        itemList.add(
-            ExpandableData(
-                ExpandableCardviewAdapter.CHILD,
-                title = "12 000 Megabayt",
-                description = "To'plamning amal qilish muddati ulanish kunidan boshlab 30 kun. Qolgan trafik keyingi oyga o'tmaydi",
-                costs = "50 000 so'm"
-            )
-        )
-        itemList.add(
-            ExpandableData(
-                ExpandableCardviewAdapter.CHILD,
-                title = "20 000 Megabayt",
-                description = "To'plamning amal qilish muddati ulanish kunidan boshlab 30 kun. Qolgan trafik keyingi oyga o'tmaydi",
-                costs = "65 000 so'm"
-            )
-        )
-        itemList.add(
-            ExpandableData(
-                ExpandableCardviewAdapter.CHILD,
-                title = "30 000 Megabayt",
-                description = "To'plamning amal qilish muddati ulanish kunidan boshlab 30 kun. Qolgan trafik keyingi oyga o'tmaydi",
-                costs = "75 000 so'm"
-            )
-        )
-        itemList.add(
-            ExpandableData(
-                ExpandableCardviewAdapter.CHILD,
-                title = "50 000 Megabayt",
-                description = "To'plamning amal qilish muddati ulanish kunidan boshlab 30 kun. Qolgan trafik keyingi oyga o'tmaydi",
-                costs = "85 000 so'm"
-            )
-        )
-        itemList.add(
-            ExpandableData(
-                ExpandableCardviewAdapter.CHILD,
-                title = "75 000 Megabayt",
-                description = "To'plamning amal qilish muddati ulanish kunidan boshlab 30 kun. Qolgan trafik keyingi oyga o'tmaydi",
-                costs = "110 000 so'm"
-            )
-        )
+        val preferences = (activity as AppCompatActivity).getSharedPreferences("ussd_dealer", Context.MODE_PRIVATE)
+        val strData = preferences.getString("data", "")
 
-//        val item = ExpandableData(ExpandableCardviewAdapter.PARENT, "Kunlik paketlar")
-//        item.children = listOf(
-        itemList.add(ExpandableData(ExpandableCardviewAdapter.PARENT, "Kunlik paketlar"))
-        itemList.add(
-            ExpandableData(
-                ExpandableCardviewAdapter.CHILD, title = "100 Megabayt",
-                description = "Internet to'plam faollashtirilgan vaqtdan boshlab 24 soat davomida amal qiladi. Qolgan trafik keyingi kunga o'tmaydi",
-                costs = "3000 so'm"
-            )
-        )
-        itemList.add(
-            ExpandableData(
-                ExpandableCardviewAdapter.CHILD, title = "300 Megabayt",
-                description = "Internet to'plam faollashtirilgan vaqtdan boshlab 24 soat davomida amal qiladi. Qolgan trafik keyingi kunga o'tmaydi",
-                costs = "6000 so'm"
-            )
-        )
-        itemList.add(
-            ExpandableData(
-                ExpandableCardviewAdapter.CHILD, title = "600 Megabayt",
-                description = "Internet to'plam faollashtirilgan vaqtdan boshlab 24 soat davomida amal qiladi. Qolgan trafik keyingi kunga o'tmaydi",
-                costs = "9000 so'm"
-            )
-        )
-//        )
-//        itemList.add(item)
+//        val myJson =
+//            inputStreamToString((activity as AppCompatActivity).resources.openRawResource(R.raw.ussdcodes))
+        val myModel = Gson().fromJson(strData, ModelGSON::class.java)
 
+        val listGroup = ArrayList<Group_Expandable>()
 
-        itemList.add(
-            ExpandableData(
-                ExpandableCardviewAdapter.PARENT,
-                "TAS-IX uchun paketlar"
-            )
-        )
-        itemList.add(ExpandableData(ExpandableCardviewAdapter.PARENT, "Non-Stop paketlar"))
-        itemList.add(ExpandableData(ExpandableCardviewAdapter.PARENT, "Tungi Internet"))
-        itemList.add(ExpandableData(ExpandableCardviewAdapter.PARENT, "Kunlik Non-Stop"))
+        val listItem = ArrayList<ChildItemDataClass>()
+        myModel?.internet?.standartPaketlar?.let { listItem.addAll(it) }
 
-        val recyclerView: RecyclerView = view.findViewById(R.id.recycler_internet)
-        recyclerView.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        val parent_1 = Group_Expandable("Standart paketlar", listItem)
+        listGroup.add(parent_1)
 
-        recyclerView.adapter = ExpandableCardviewAdapter(itemList, context)
+        val listItem2 = ArrayList<ChildItemDataClass>()
+        myModel?.internet?.kunlikPaketlar?.let { listItem2.addAll(it) }
+
+        val parent_2 = Group_Expandable("Kunlik paketlar", listItem2)
+        listGroup.add(parent_2)
+
+        val listItem3 = ArrayList<ChildItemDataClass>()
+        myModel?.internet?.tasixPaketlar?.let { listItem3.addAll(it) }
+
+        val parent_3 = Group_Expandable("TAS-IX uchun paketlar", listItem3)
+        listGroup.add(parent_3)
+
+        val listItem4 = ArrayList<ChildItemDataClass>()
+        myModel?.internet?.tungiPaketlar?.let { listItem4.addAll(it) }
+
+        val parent_4 = Group_Expandable("Tungi Internet", listItem4)
+        listGroup.add(parent_4)
+
+        recycler_internet.layoutManager = LinearLayoutManager(context)
+        recycler_internet.adapter = ExpandableAdapter(listGroup, context)
 
     }
 
@@ -170,10 +87,10 @@ class Fragment_Internet : Fragment() {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             Fragment_Internet().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+                arguments = bundleOf(
+                    Pair(ARG_PARAM1, param1),
+                    Pair(ARG_PARAM2, param2)
+                )
             }
     }
 }

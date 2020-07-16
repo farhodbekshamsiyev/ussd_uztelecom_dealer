@@ -9,16 +9,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import com.farhod.ussd_uztelecom_dealer.MainActivity
 import com.farhod.ussd_uztelecom_dealer.R
 import com.farhod.ussd_uztelecom_dealer.WebView
 import com.farhod.ussd_uztelecom_dealer.adapter.SliderAdapterExample
 import com.farhod.ussd_uztelecom_dealer.data_classes.SliderData
+import com.farhod.ussd_uztelecom_dealer.inputStreamToString
+import com.lessons.udemy.kotlincode.ReadData
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType
 import com.smarteist.autoimageslider.SliderAnimations
 import com.smarteist.autoimageslider.SliderView
@@ -30,15 +30,12 @@ class Fragment_Asosiy : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_asosiy, container, false)
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        (activity as MainActivity).changeStatusBarColor(true)
 
         btn_asosiy_fr_1.setOnClickListener(listener)
         btn_asosiy_fr_2.setOnClickListener(listener)
@@ -87,22 +84,6 @@ class Fragment_Asosiy : Fragment() {
         imageSlider.startAutoCycle()
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>, grantResults: IntArray
-    ) {
-        if (requestCode == REQUEST_PHONE_CALL) {
-            if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                Toast.makeText(activity, "Qo'ng'iroqlarga ruxsat berildi", Toast.LENGTH_SHORT)
-                    .show()
-            } else {
-                Toast.makeText(activity, "Qo'ng'iroqlarga ruxsat berilmadi", Toast.LENGTH_SHORT)
-                    .show()
-            }
-            return
-        }
-    }
-
     private val listener = View.OnClickListener { view ->
         when (view.id) {
 
@@ -121,9 +102,10 @@ class Fragment_Asosiy : Fragment() {
                         arrayOf(Manifest.permission.CALL_PHONE),
                         REQUEST_PHONE_CALL
                     )
+
                 } else {
+                    callPhone("$TELEPHONE_SCHEME$COMPANY_PHONE")
                 }
-                callPhone("$TELEPHONE_SCHEME$COMPANY_PHONE")
             }
 
             R.id.btn_asosiy_fr_3 -> {
@@ -139,14 +121,21 @@ class Fragment_Asosiy : Fragment() {
         }
     }
 
-    fun callPhone(number: String) {
+    fun callPhone(number: String?) {
         val intent = Intent(Intent.ACTION_CALL, Uri.parse(number))
         startActivity(intent)
     }
 
-    fun dialPhone(number: String) {
+    fun dialPhone(number: String?) {
         val intent = Intent(Intent.ACTION_DIAL, Uri.parse(TELEPHONE_SCHEME + Uri.encode(number)))
         startActivity(intent)
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>, grantResults: IntArray
+    ) {
+       if (requestCode == REQUEST_PHONE_CALL) callPhone("$TELEPHONE_SCHEME$COMPANY_PHONE")
     }
 
     companion object {

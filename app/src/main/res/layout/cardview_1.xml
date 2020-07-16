@@ -4,7 +4,7 @@
     android:id="@+id/cardview_1"
     android:layout_width="match_parent"
     android:layout_height="215dp"
-    android:layout_marginVertical="16dp"
+    android:layout_marginVertical="8dp"
     android:layout_marginHorizontal="16dp"
     app:cardBackgroundColor="@color/colorWhite"
     android:background="?selectableItemBackground"
@@ -126,7 +126,7 @@
             app:layout_constraintTop_toBottomOf="@+id/card_txt_min" />
 
         <View
-            android:id="@+id/view"
+            android:id="@+id/viewline"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginStart="16dp"
@@ -157,7 +157,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:layout_constraintTop_toBottomOf="@+id/viewline"
             app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

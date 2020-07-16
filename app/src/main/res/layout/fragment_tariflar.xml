@@ -10,12 +10,14 @@
         android:id="@+id/toolbar_tariflar"
         layout="@layout/toolbar_1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
-    <include
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_tariflar"
-        layout="@layout/recyclerivew_1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:background="@color/colorTransparentLight"
+        android:paddingTop="8dp"
+        android:scrollbars="none" />
 
 </LinearLayout>

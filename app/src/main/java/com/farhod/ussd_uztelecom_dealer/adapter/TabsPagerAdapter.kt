@@ -16,15 +16,9 @@ class TabsPagerAdapter(
 
     override fun createFragment(position: Int): Fragment {
         when (position) {
-            0 -> {
-                return Fragment_Internet.newInstance("internet", "")
-            }
-            1 -> {
-                return Fragment_Daqiqalar.newInstance("daqiqalar", "")
-            }
-            2 -> {
-                return Fragment_SMS.newInstance("sms", "")
-            }
+            0 -> return Fragment_Internet.newInstance("internet", "")
+            1 -> return Fragment_Daqiqalar.newInstance("daqiqalar", "")
+            2 -> return Fragment_SMS.newInstance("sms", "")
             else -> return Fragment_Internet.newInstance("internet", "")
         }
     }
