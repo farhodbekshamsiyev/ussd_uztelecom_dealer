@@ -7,26 +7,18 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.farhod.ussd_uztelecom_dealer.MainActivity
 import com.farhod.ussd_uztelecom_dealer.R
-import com.farhod.ussd_uztelecom_dealer.adapter.ExpandableAdapter
 import com.farhod.ussd_uztelecom_dealer.adapter.RecycleriViewAdapter
-import com.farhod.ussd_uztelecom_dealer.data_classes.Group_Expandable
-import com.farhod.ussd_uztelecom_dealer.data_classes.TarifData
-import com.farhod.ussd_uztelecom_dealer.inputStreamToString
 import com.farhod.ussd_uztelecom_dealer.model.ChildItemDataClass
 import com.farhod.ussd_uztelecom_dealer.model.ModelGSON
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_daqiqalar.*
 import kotlinx.android.synthetic.main.fragment_tariflar.*
 
 
@@ -72,7 +64,7 @@ class Fragment_Tariflar : Fragment() {
         when (item.itemId) {
             android.R.id.home -> {
                 (activity as MainActivity).btm_nav_view.selectedItemId = R.id.asosiy
-                (activity as MainActivity).startFragment(Fragment_Asosiy.newInstance())
+                (activity as MainActivity).startFragment(Fragment_Asosiy.newInstance(), Fragment_Asosiy::class.java.simpleName)
             }
         }
         return super.onOptionsItemSelected(item)

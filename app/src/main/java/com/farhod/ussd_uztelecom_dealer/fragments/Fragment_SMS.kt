@@ -2,20 +2,19 @@ package com.farhod.ussd_uztelecom_dealer.fragments
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.farhod.ussd_uztelecom_dealer.R
 import com.farhod.ussd_uztelecom_dealer.adapter.ExpandableAdapter
 import com.farhod.ussd_uztelecom_dealer.data_classes.Group_Expandable
-import com.farhod.ussd_uztelecom_dealer.inputStreamToString
 import com.farhod.ussd_uztelecom_dealer.model.ChildItemDataClass
 import com.farhod.ussd_uztelecom_dealer.model.ModelGSON
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.fragment_daqiqalar.*
 import kotlinx.android.synthetic.main.fragment_sms.*
 
 private const val ARG_PARAM1 = "param1"
@@ -36,7 +35,10 @@ class Fragment_SMS : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val preferences = (activity as AppCompatActivity).getSharedPreferences("ussd_dealer", Context.MODE_PRIVATE)
+        val preferences = (activity as AppCompatActivity).getSharedPreferences(
+            "ussd_dealer",
+            Context.MODE_PRIVATE
+        )
         val strData = preferences.getString("data", "")
 
 //        val myJson =
@@ -79,9 +81,9 @@ class Fragment_SMS : Fragment() {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             Fragment_SMS().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                arguments = bundleOf().apply {
+                    Pair(ARG_PARAM1, param1)
+                    Pair(ARG_PARAM2, param2)
                 }
             }
     }

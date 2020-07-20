@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.farhod.ussd_uztelecom_dealer.MainActivity
 import com.farhod.ussd_uztelecom_dealer.R
 import com.farhod.ussd_uztelecom_dealer.adapter.TabsPagerAdapter
 import com.google.android.material.tabs.TabLayout

@@ -3,20 +3,18 @@ package com.farhod.ussd_uztelecom_dealer.fragments
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import android.view.*
-import android.widget.Toast
+import android.view.LayoutInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.farhod.ussd_uztelecom_dealer.MainActivity
 import com.farhod.ussd_uztelecom_dealer.R
 import com.farhod.ussd_uztelecom_dealer.WebView
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.cardview_1.*
 import kotlinx.android.synthetic.main.fragment_kuproq.*
 
 
@@ -98,10 +96,9 @@ class Fragment_Kuproq : Fragment() {
         when (item.itemId) {
             android.R.id.home -> {
                 (activity as MainActivity).btm_nav_view.selectedItemId = R.id.asosiy
-                (activity as MainActivity).startFragment(Fragment_Asosiy.newInstance())
+                (activity as MainActivity).startFragment(Fragment_Asosiy.newInstance(), Fragment_Asosiy::class.java.simpleName)
             }
         }
-//        btm_nav_view.itemIconTintList = null;
         return super.onOptionsItemSelected(item)
     }
 

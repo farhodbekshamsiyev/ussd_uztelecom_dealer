@@ -12,13 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.farhod.ussd_uztelecom_dealer.R
 import com.farhod.ussd_uztelecom_dealer.adapter.ExpandableAdapter
 import com.farhod.ussd_uztelecom_dealer.data_classes.Group_Expandable
-import com.farhod.ussd_uztelecom_dealer.inputStreamToString
 import com.farhod.ussd_uztelecom_dealer.model.ChildItemDataClass
 import com.farhod.ussd_uztelecom_dealer.model.ModelGSON
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_internet.*
-
-//import com.farhod.ussd_uztelecom_dealer.adapter.ExpandableCardviewAdapter
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -83,7 +80,7 @@ class Fragment_Internet : Fragment() {
 
     }
 
-    public companion object {
+    companion object {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             Fragment_Internet().apply {

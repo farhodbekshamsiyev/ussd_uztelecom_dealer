@@ -29,7 +29,8 @@ class WebView : AppCompatActivity() {
         webV.webViewClient = WebViewClient()
         webV.settings.javaScriptEnabled = true
         webV.settings.domStorageEnabled = true
-        webV.overScrollMode = WebView.OVER_SCROLL_IF_CONTENT_SCROLLS
+        webV.settings.setNeedInitialFocus(true)
+//        webV.overScrollMode = WebView.OVER_SCROLL_IF_CONTENT_SCROLLS
         webV.loadUrl(webSite)
 
     }

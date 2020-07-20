@@ -13,6 +13,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import com.farhod.ussd_uztelecom_dealer.MainActivity
 import com.farhod.ussd_uztelecom_dealer.R
 import com.farhod.ussd_uztelecom_dealer.WebView
 import com.farhod.ussd_uztelecom_dealer.adapter.SliderAdapterExample
@@ -36,6 +37,9 @@ class Fragment_Asosiy : Fragment() {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val curfr = (activity as MainActivity).supportFragmentManager.findFragmentById(R.id.frame_layout)
+        (activity as MainActivity).selectBottomNavbarItem(curfr)
 
         btn_asosiy_fr_1.setOnClickListener(listener)
         btn_asosiy_fr_2.setOnClickListener(listener)
@@ -135,7 +139,11 @@ class Fragment_Asosiy : Fragment() {
         requestCode: Int,
         permissions: Array<String>, grantResults: IntArray
     ) {
-       if (requestCode == REQUEST_PHONE_CALL) callPhone("$TELEPHONE_SCHEME$COMPANY_PHONE")
+       if (requestCode == REQUEST_PHONE_CALL) {
+           callPhone("$TELEPHONE_SCHEME$COMPANY_PHONE")
+       } else {
+           dialPhone("$TELEPHONE_SCHEME$COMPANY_PHONE")
+       }
     }
 
     companion object {
@@ -149,5 +157,4 @@ class Fragment_Asosiy : Fragment() {
         fun newInstance() =
             Fragment_Asosiy()
     }
-
 }

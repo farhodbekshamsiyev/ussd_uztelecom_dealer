@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.farhod.ussd_uztelecom_dealer.fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -37,7 +38,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         setContentView(R.layout.activity_main)
 
         if (savedInstanceState == null) {
-            startFragment(Fragment_Asosiy.newInstance())
+            startFragment(Fragment_Asosiy.newInstance(), Fragment_Asosiy::class.java.simpleName)
         }
 
         val prefs = this.getSharedPreferences(
@@ -76,38 +77,47 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     private fun openFragmentAsosiy() {
         if (Fragment_Asosiy::class.java != currentFragment?.javaClass) {
-            startFragment(Fragment_Asosiy.newInstance())
+            startFragment(Fragment_Asosiy.newInstance(), Fragment_Asosiy::class.java.simpleName)
         }
     }
 
     private fun openFragmentTariflar() {
         if (Fragment_Tariflar::class.java != currentFragment?.javaClass) {
-            startFragment(Fragment_Tariflar.newInstance())
+            startFragment(Fragment_Tariflar.newInstance(), Fragment_Tariflar::class.java.simpleName)
         }
     }
 
     private fun openFragmentXizmatlar() {
         if (Fragment_Xizmatlar::class.java != currentFragment?.javaClass) {
-            startFragment(Fragment_Xizmatlar.newInstance())
+            startFragment(
+                Fragment_Xizmatlar.newInstance(),
+                Fragment_Xizmatlar::class.java.simpleName
+            )
         }
     }
 
     private fun openFragmentPaketlar() {
         if (Fragment_Paketlar::class.java != currentFragment?.javaClass) {
-            startFragment(Fragment_Paketlar.newInstance())
+            startFragment(Fragment_Paketlar.newInstance(), Fragment_Paketlar::class.java.simpleName)
         }
     }
 
     private fun openFragmentKuproq() {
         if (Fragment_Kuproq::class.java != currentFragment?.javaClass) {
-            startFragment(Fragment_Kuproq.newInstance())
+            startFragment(Fragment_Kuproq.newInstance(), Fragment_Kuproq::class.java.simpleName)
         }
     }
 
-    fun startFragment(fragment: Fragment) {
+    fun startFragment(fragment: Fragment, tag: String?) {
         currentFragment = fragment
+
+        if (supportFragmentManager.findFragmentByTag(tag) != null) {
+            supportFragmentManager.popBackStack(tag, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        }
+
         supportFragmentManager.beginTransaction()
-            .replace(R.id.frame_layout, fragment, fragment.javaClass.simpleName)
+            .addToBackStack(tag)
+            .replace(R.id.frame_layout, fragment, tag)
             .setCustomAnimations(
                 R.anim.fragment_fade_enter,
                 R.anim.fragment_fade_exit
@@ -125,19 +135,42 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     }
 
     override fun onBackPressed() {
-        if (backPressedTime + 2000 > System.currentTimeMillis()) {
-            backToast?.cancel()
-            super.onBackPressed()
-            return
-        } else {
-            backToast = Toast.makeText(
-                baseContext,
-                "Chiqish uchun yana bir marta bosing",
-                Toast.LENGTH_SHORT
-            )
-            backToast.run { this?.show() }
+        val fragmentsInStack = supportFragmentManager.backStackEntryCount
+        if (fragmentsInStack > 1) {
+            // If we have more than one fragment, pop back stack
+            supportFragmentManager.popBackStack();
+
+        } else {//if (fragmentsInStack == 1)
+            // Finish activity, if only one fragment left, to prevent leaving empty screen
+            if (backPressedTime + 2000 > System.currentTimeMillis()) {
+                backToast?.cancel()
+                super.onBackPressed()
+                finish()
+                return
+            } else {
+                backToast = Toast.makeText(
+                    baseContext,
+                    "Chiqish uchun yana bir marta bosing",
+                    Toast.LENGTH_SHORT
+                )
+                backToast.run { this?.show() }
+            }
+            backPressedTime = System.currentTimeMillis()
         }
-        backPressedTime = System.currentTimeMillis()
+//        else {
+//            super.onBackPressed();
+////            finish()
+//        }
+    }
+
+    fun selectBottomNavbarItem(fragment: Fragment?) {
+        when (fragment) {
+            is Fragment_Asosiy -> btm_nav_view.selectedItemId = R.id.asosiy
+            is Fragment_Tariflar -> btm_nav_view.selectedItemId = R.id.tariflar
+            is Fragment_Xizmatlar -> btm_nav_view.selectedItemId = R.id.xizmatlar
+            is Fragment_Paketlar -> btm_nav_view.selectedItemId = R.id.paketlar
+            is Fragment_Kuproq -> btm_nav_view.selectedItemId = R.id.kuproq
+        }
     }
 }
 
